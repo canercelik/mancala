@@ -1,0 +1,11 @@
+header {
+    text-align: center;
+    color: rgb(68, 38, 11);
+    font-family: Calibri;
+}
+
+#game-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

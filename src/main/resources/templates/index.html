@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <link href="/../static/css/play.css"th:href="@{/css/main.css}" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+                crossorigin="anonymous"></script>
+
+
+        <script type="module" th:src="@{/script/main.js}"></script>
+
+        <title>Mancala Game</title>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1 class="display-4">Mancala</h1>
+            </header>
+            <div id="gameplay">
+                <div class="text-center">
+                    <img th:src="@{/img/mancala.png}">
+                </div>
+                <h4 class="align-content-center">Game Play</h4>
+                <p>
+                    The player who begins with the first move picks up all the stones in any of his own six pits and sows the
+                    stones onto the right, one in each of the following pits, including his own big pit. No stones are put in
+                    the opponents' big pit. If the player's last stone lands in his own big pit, he gets another turn. This can
+                    be repeated several times before it's the other player's turn.&nbsp
+                </p>
+                <p>
+                    <strong>Capturing Stones</strong>
+                </p>
+                <p>
+                    During the game, the pits are emptied on both sides. Always when the last stone lands in its own empty pit,
+                    the player captures his own stone and all stones in the opposite pit (the other player&rsquo;s pit) and puts
+                    them in his own (big or little?) pit.&nbsp
+                </p>
+                <p>
+                    <strong>The Game Ends</strong>
+                </p>
+                <p>
+                    The game is over as soon as one of the sides runs out of stones. The player who still has stones in his pits
+                    keeps them and puts them in his big pit. The winner of the game is the player who has the most stones in his
+                    big pit.
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <form action="#" method="POST"
+                  th:action="@{/play}"
+                  th:object="${playerNames}">
+                    <div class="row">
+                        <input  type="text" name="firstPlayer" required th:field="*{firstPlayer}"
+                            class=".col-xs-3" placeholder="First Player">
+                    </div>
+                    <div class="row">
+                        <input  type="text" name="secondPlayer" required th:field="*{secondPlayer}"
+                            class=".col-xs-3" placeholder="Second Player">
+                    </div>
+                    <br> <br>
+                    <div class="col">
+                        <button type="submit" class="btn btn-info col-2">Start New Game</button>
+                    </div>
+            </form>
+        </div>
+    </body>
+</html>

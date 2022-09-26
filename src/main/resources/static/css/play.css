@@ -1,0 +1,71 @@
+header {
+    text-align: center;
+    color: rgb(68, 38, 11);
+    font-family: Calibri;
+}
+
+.board {
+    border-radius: 20%;
+    background: #b88645 ;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    border-collapse: separate;
+    border: 2px solid black;
+}
+
+#player2-row{
+    color: green;
+}
+#player1-row{
+    color: blue;
+}
+.store {
+    min-width: 100px;
+    height: 100%;
+    background: #864313;
+    border: 2px solid white;
+    border-radius: 20%;
+    color: white;
+}
+
+.house {
+    width: 75px;
+    height: 75px;
+    color: white;
+    cursor: pointer;
+    background: #a85418;
+    border-radius: 20%;
+}
+.house:hover {
+    background: #864313;
+}
+
+.status{
+    text-align: center;
+}
+
+#game-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.enabled {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.disabled {
+    pointer-events: none;
+    /*background-color: #6a6767;*/
+}
+.hidden{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+}
+.status {
+    margin: auto;
+}

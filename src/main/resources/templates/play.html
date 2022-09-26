@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+      <head>
+          <meta charset="utf-8" />
+          <link th:href = "@{/css/play.css}" rel="stylesheet">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+          <script type="text/javascript" th:src="@{/script/play.js}"></script>
+          <script data-th-inline="javascript">
+               const gameData = [[${gameEntity}]];
+               // const gamePlayData = [[${gamePlayEntity}]];
+          </script>
+          <title>Mancala Game</title>
+      </head>
+      <body>
+          <div class="container">
+              <header>
+                  <h1 class="h4"
+                      th:text="${gameEntity.getFirstPlayerEntity().playerName}"></h1>
+                  <h1 class="h4">vs</h1>
+                  <h1 class="h4"
+                      th:text="${gameEntity.getSecondPlayerEntity().playerName}"></h1>
+              </header>
+              <div class="board-container" id="game-board">
+                  <table class="board">
+                      <tbody>
+                      <tr class="player-row" id="player2-row">
+                          <td colspan="8">
+                              <h3 class="player-2" th:text="${gameEntity.getSecondPlayerEntity().playerName}">
+                                  Player 2
+                              </h3>
+                          </td>
+                      </tr>
+                      <tr class="board-row">
+                          <td class="store" id="pit-13" rowspan="3"
+                              th:text="${gameEntity.getBoard().get(13).count()}">
+                          </td>
+                          <td>
+                              <button class="house" id="pit-12"
+                                      th:text="${gameEntity.getBoard().get(12).count()}"
+                                      th:onclick="validateMove(12)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-11"
+                                      th:text="${gameEntity.getBoard().get(11).count()}"
+                                      th:onclick="validateMove(11)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-10"
+                                      th:text="${gameEntity.getBoard().get(10).count()}"
+                                      th:onclick="validateMove(10)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-9"
+                                      th:text="${gameEntity.getBoard().get(9).count()}"
+                                      th:onclick="validateMove(9)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-8"
+                                      th:text="${gameEntity.getBoard().get(8).count()}"
+                                      th:onclick="validateMove(8)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-7"
+                                      th:text="${gameEntity.getBoard().get(7).count()}"
+                                      th:onclick="validateMove(7)">
+                              </button>
+                          </td>
+                          <td class="store" id="pit-6" rowspan="3"
+                              th:text="${gameEntity.getBoard().get(6).count()}">
+                          </td>
+                      </tr>
+                      <tr class="blank-row">
+                          <!--<td colspan="6"><hr /></td>-->
+                      </tr>
+                      <tr class="board-row">
+                          <td>
+                              <button class="house" id="pit-0"
+                                      th:text="${gameEntity.getBoard().get(0).count()}"
+                                      th:onclick="validateMove(0)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-1"
+                                      th:text="${gameEntity.getBoard().get(1).count()}"
+                                      th:onclick="validateMove(1)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-2"
+                                      th:text="${gameEntity.getBoard().get(2).count()}"
+                                      th:onclick="validateMove(2)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-3"
+                                      th:text="${gameEntity.getBoard().get(3).count()}"
+                                      th:onclick="validateMove(3)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-4"
+                                      th:text="${gameEntity.getBoard().get(4).count()}"
+                                      th:onclick="validateMove(4)">
+                              </button>
+                          </td>
+                          <td>
+                              <button class="house" id="pit-5"
+                                      th:text="${gameEntity.getBoard().get(5).count()}"
+                                      th:onclick="validateMove(5)">
+                              </button>
+                          </td>
+                      </tr>
+                      <tr class="player-row" id="player1-row">
+                          <td colspan="8">
+                              <h3 class="player-1" th:text="${gameEntity.getFirstPlayerEntity().playerName}">
+                                  Player 1
+                              </h3>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          <br> <br>
+          <div class="status">
+              <label>Game ID: </label>
+              <span id="game-id">
+                  <span th:text="${gameEntity.getUuid().toString()}"></span>
+              </span>
+              <br>
+              <label>Status: </label>
+              <span id="game-status" th:text="${gameEntity.getStatus().toString()}" />
+              <br>
+              <label>Total Turns: </label>
+              <span id="total-turn">0</span>
+              <br>
+              <label class="status-label">Current Turn: </label>
+              <span id="player-turn">
+                  <span th:text="${gameEntity.getFirstPlayerEntity().playerName.toString()}"/>
+              </span>
+              <br>
+              <label class="winner-label hidden" id="winner">Winner: </label>
+              <span id="winner-player">
+              </span>
+
+          </div>
+          <div class="d-flex justify-content-center hidden" id="new-game">
+              <a class="btn btn-primary" href="/" role="button">Start New Game</a>
+          </div>
+      </body>
+</html>
