@@ -54,7 +54,7 @@ and determine the winner.
 - Thymeleaf 
 - Aspectj / Spring AOP
 - SpringDoc OpenAPI
-- -Swagger-ui
+- - Swagger-ui
 - Diffblue
 - - JUnit 5
 - Lombok
