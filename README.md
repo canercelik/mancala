@@ -1,6 +1,4 @@
-# The bol.com Game
-
-This project is coded as a technical assignment for bol.com 
+# The Mancala Game
 
 ## Game Play
   
@@ -61,5 +59,3 @@ and determine the winner.
 
 ### Tests
 Tests are produced by the Diffblue.
-
-> It was fun to work on this assignment.  
