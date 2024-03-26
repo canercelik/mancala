@@ -24,6 +24,6 @@ public class MancalaLogger {
 
     @After("execution(* com.canercelik..*.*(..))")
     public void logAfterMethod(@NotNull JoinPoint joinPoint) {
-        logger.info("Executed \"{}\" method of \"{}\" successfuly.", joinPoint.getSignature().getName(), joinPoint.getTarget().getClass().getName());
+        logger.info("Executed \"{}\" method of \"{}\" successfully.", joinPoint.getSignature().getName(), joinPoint.getTarget().getClass().getName());
     }
 }
