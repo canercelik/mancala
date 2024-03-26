@@ -16,7 +16,6 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerRepository repository = new PlayerRepository();
 
     public PlayerEntity create(String playerName, PlayerTurn playerTurn) {
-        //logger.debug("Creating player against name {}, with type {}", playerName, playerType);
         return repository.save(
                 PlayerEntity.builder()
                 .uuid(UUID.randomUUID())

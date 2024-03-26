@@ -1,16 +1,21 @@
 package com.canercelik.mancala.entity.game;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Data;
 
-@Builder
-@NoArgsConstructor
-@Setter
-@Getter
-@AllArgsConstructor
+/**
+ * GameStartEntity is a data class that represents the initial state of a game.
+ * It includes information about the names of the first and second players.
+ */
+@Data
 public class GameStartEntity {
-    @JsonProperty(value = "firstPlayer")
+
+    /**
+     * The name of the first player.
+     */
     private String firstPlayer;
-    @JsonProperty(value = "secondPlayer")
+
+    /**
+     * The name of the second player.
+     */
     private String secondPlayer;
 }

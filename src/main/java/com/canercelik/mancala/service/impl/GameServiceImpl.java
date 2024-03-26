@@ -19,29 +19,34 @@ import static com.canercelik.mancala.enums.PlayerTurn.SECOND;
 public class GameServiceImpl implements GameService {
 
     @Autowired
-    private GameRepository repository = new GameRepository();
+    private GameRepository repository;
 
-    private GameHelper helper = new GameHelper();
+    @Autowired
+    private GameHelper helper;
+
+    @Autowired
+    private PlayerServiceImpl playerService;
+
+    @Autowired
+    private BoardServiceImpl boardService;
 
     @Override
     public GameEntity start(String firstPlayer, String secondPlayer) {
         return repository.save(
                 GameEntity
-                .builder()
-                .uuid(UUID.randomUUID())
-                .firstPlayerEntity(new PlayerServiceImpl().create(firstPlayer, FIRST))
-                .secondPlayerEntity(new PlayerServiceImpl().create(secondPlayer, SECOND))
-                .board(new BoardServiceImpl().create())
-                .status(START)
-                .playerTurn(FIRST)
-                .totalTurn(0)
-                .build());
+                        .builder()
+                        .uuid(UUID.randomUUID())
+                        .firstPlayerEntity(playerService.create(firstPlayer, FIRST))
+                        .secondPlayerEntity(playerService.create(secondPlayer, SECOND))
+                        .board(boardService.create())
+                        .status(START)
+                        .playerTurn(FIRST)
+                        .totalTurn(0)
+                        .build());
     }
 
     public GameEntity play(@NotNull GamePlayEntity gamePlayEntity){
-        /**
-         *
-         */
+
         GameEntity gameEntity = repository.findById(gamePlayEntity.getUuid());
 
         if(gamePlayEntity.getPlayerTurn().equals(gameEntity.getPlayerTurn())){

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8"/>
-        <link href="/../static/css/play.css"th:href="@{/css/main.css}" rel="stylesheet">
+        <link href="/../static/css/play.css" th:href="@{/css/main.css}" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <!-- CSS only -->
@@ -13,8 +13,8 @@
                 integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
                 crossorigin="anonymous"></script>
 
-
-        <script type="module" th:src="@{/script/main.js}"></script>
+        <!-- TODO: Define Main.js -->
+		<!-- <script type="module" th:src="@{/script/main.js}"></script> -->
 
         <title>Mancala Game</title>
     </head>
@@ -25,7 +25,7 @@
             </header>
             <div id="gameplay">
                 <div class="text-center">
-                    <img th:src="@{/img/mancala.png}">
+                    <img th:src="@{/img/mancala.png}" alt="">
                 </div>
                 <h4 class="align-content-center">Game Play</h4>
                 <p>
